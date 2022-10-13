@@ -5,8 +5,9 @@ set(0,'DefaultFigureWindowStyle','docked')
 
 % Simulation settings 
 linear_adc = 1;
-random_noise = 1;
-
+random_noise = 0;
+jitter = 1;
+jitter_freq = 0.1;
 
 sampling_rate = 10*10e9;
 clock_frequency = 0.5*sampling_rate;
@@ -20,7 +21,7 @@ clock_num_points = 1000000;
 clock_times = linspace(start_time, end_time, clock_num_points);
 
 input_sequence = myInputSequence(clock_times, random_noise);
-clock = 0.5*(square(2*pi*clock_frequency*clock_times-pi)+1);
+clock = myClock(clock_times, clock_frequency, jitter, jitter_freq);
 
 samples = zeros(1, length(clock_times));
 
