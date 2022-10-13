@@ -18,5 +18,8 @@ function [val] = getSNR(power_vals)
         end
     end
     avg_noise = noise/num_noise;
-    val = 10*log10(signal/avg_noise);
+    noise_floor_dB = 20*log10(avg_noise);
+    signaldB = 20*log10(signal);
+    M = 8192;
+    val = signaldB - noise_floor_dB - 10*log10(M/2);
 end

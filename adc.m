@@ -4,8 +4,8 @@ function [digital_out] = adc(analog_in, linear)
     % 8-Bit ADC means 2^8 = 256 levels
     for i=7:-1:0
         VLSB = 1*VFS/(2^8);
-        if rand(1) > 0.25 && linear == 0
-            VLSB = 2*VFS/(2^8);
+        if rand(1) > 0.5 && linear == 0
+            VLSB = 1.25*VFS/(2^8);
         end
         check_val = VLSB*(2^i);
         if analog_in > check_val

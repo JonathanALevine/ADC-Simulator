@@ -4,7 +4,6 @@ function [val] = getSINAD(power_vals)
 
     [power_vals, idx] = sort(power_vals, 'descend');
 
-    % signal = max(power_vals);
     signal = power_vals(1);
 
     % Remove the 5 biggest harmonics
@@ -18,5 +17,6 @@ function [val] = getSINAD(power_vals)
         end
     end
     avg_noise = noise/num_noise;
-    val = 10*log10((signal+avg_noise)/avg_noise);
+    M = 8192;
+    val = 20*log10((signal+avg_noise)/avg_noise) - 10*log10(M/2);
 end
