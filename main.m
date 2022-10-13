@@ -6,7 +6,7 @@ set(0,'DefaultFigureWindowStyle','docked')
 % Simulation settings 
 linear_adc = 1;
 random_noise = 0;
-jitter = 1;
+jitter = 0;
 jitter_freq = 0.1;
 
 sampling_rate = 10*10e9;
