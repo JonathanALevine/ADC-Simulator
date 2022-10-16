@@ -4,11 +4,11 @@ clear; %intialization
 set(0,'DefaultFigureWindowStyle','docked')
 
 % Simulation settings 
-linear_adc = 1;
+linear_adc = 0;
 random_noise = 0;
-jitter = 1;
-jitter_freq = 0.25;
-save_plots = 0;
+jitter = 0;
+jitter_freq = 0.5;
+save_plots = 1;
 
 sampling_rate = 10*1e9;
 clock_frequency = 0.5*sampling_rate;
@@ -62,7 +62,7 @@ xlabel('Time (\mus)')
 ylabel('Digitized Signal (V)') 
 
 if save_plots
-    FN2 = 'Figures/time_domains_non_linear_adc';   
+    FN2 = 'Figures/time_domains';   
     print(gcf, '-dpng', '-r600', FN2);  %Save graph in PNG
 end
 
@@ -80,12 +80,12 @@ xlabel("Frequency (MHz)")
 ylabel("Signal Power (V)")
 
 SNR = getSNR(P1)
-% ideal_SNR = 6.02*8-1.76
+ideal_SNR = 6.02*8-1.76
 SFDR = getSFDR(P1)
 SINAD = getSINAD(P1)
 ENOB = getENOB(SINAD)
 
 if save_plots
-    FN2 = 'Figures/fft_partA';   
+    FN2 = 'Figures/fft_part1';   
     print(gcf, '-dpng', '-r600', FN2);  %Save graph in PNG
 end
